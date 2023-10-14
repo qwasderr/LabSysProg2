@@ -1,2 +1,0 @@
-Automata won't stop(wont't get to the final state) on abb+w1
-false

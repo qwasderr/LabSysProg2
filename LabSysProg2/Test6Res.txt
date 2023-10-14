@@ -1,2 +1,0 @@
-Automata recognizes the word and is in its final state
-false

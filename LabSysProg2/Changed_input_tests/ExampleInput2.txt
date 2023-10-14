@@ -1,0 +1,17 @@
+//Not for passing to the program as an input file
+ba  //w0 word
+5 // the number of letters of the input alphabet
+5 // the number of states
+0 //starting state
+2 3 4 //the number of the final states & the numbers of final states
+// rules block
+0 e 0
+0 a 1
+0 c 1
+0 b 2
+0 d 4
+1 b 1
+1 c 4
+2 a 3
+3 e 3
+3 c 0

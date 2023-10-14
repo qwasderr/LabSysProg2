@@ -1,0 +1,2 @@
+Automata won't get to the final state after w0 => w1 doesn't exist
+false

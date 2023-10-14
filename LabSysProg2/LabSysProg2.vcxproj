@@ -102,7 +102,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -128,39 +128,54 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="set.c" />
-    <ClCompile Include="Source.c">
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
+    <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="set.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Example.txt" />
-    <Text Include="Test1.txt" />
-    <Text Include="Test10.txt" />
-    <Text Include="Test10Res.txt" />
-    <Text Include="Test11.txt" />
-    <Text Include="Test11Res.txt" />
-    <Text Include="Test12.txt" />
-    <Text Include="Test12Res.txt" />
-    <Text Include="Test1Res.txt" />
-    <Text Include="Test2.txt" />
-    <Text Include="Test2Res.txt" />
-    <Text Include="Test3.txt" />
-    <Text Include="Test3Res.txt" />
-    <Text Include="Test4.txt" />
-    <Text Include="Test4Res.txt" />
-    <Text Include="Test5.txt" />
-    <Text Include="Test5Res.txt" />
-    <Text Include="Test6.txt" />
-    <Text Include="Test6Res.txt" />
-    <Text Include="Test7.txt" />
-    <Text Include="Test7Res.txt" />
-    <Text Include="Test8.txt" />
-    <Text Include="Test8Res.txt" />
-    <Text Include="Test9.txt" />
-    <Text Include="Test9Res.txt" />
+    <Text Include="Changed_input_tests\ExampleInput2.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test1Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test2Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test3Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test4Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test5Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test6Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test7Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test8Res.txt" />
+    <Text Include="Changed_input_tests\Tests\Test1.txt" />
+    <Text Include="Changed_input_tests\Tests\Test2.txt" />
+    <Text Include="Changed_input_tests\Tests\Test3.txt" />
+    <Text Include="Changed_input_tests\Tests\Test4.txt" />
+    <Text Include="Changed_input_tests\Tests\Test5.txt" />
+    <Text Include="Changed_input_tests\Tests\Test6.txt" />
+    <Text Include="Changed_input_tests\Tests\Test7.txt" />
+    <Text Include="Changed_input_tests\Tests\Test8.txt" />
+    <Text Include="Main_tests\Example.txt" />
+    <Text Include="Main_tests\TestsRes\Test10Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test11Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test12Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test1Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test2Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test3Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test4Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test5Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test6Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test7Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test8Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test9Res.txt" />
+    <Text Include="Main_tests\Tests\Test1.txt" />
+    <Text Include="Main_tests\Tests\Test10.txt" />
+    <Text Include="Main_tests\Tests\Test11.txt" />
+    <Text Include="Main_tests\Tests\Test12.txt" />
+    <Text Include="Main_tests\Tests\Test2.txt" />
+    <Text Include="Main_tests\Tests\Test3.txt" />
+    <Text Include="Main_tests\Tests\Test4.txt" />
+    <Text Include="Main_tests\Tests\Test5.txt" />
+    <Text Include="Main_tests\Tests\Test6.txt" />
+    <Text Include="Main_tests\Tests\Test7.txt" />
+    <Text Include="Main_tests\Tests\Test8.txt" />
+    <Text Include="Main_tests\Tests\Test9.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

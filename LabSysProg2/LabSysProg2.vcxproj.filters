@@ -13,18 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Tests">
-      <UniqueIdentifier>{7ddf7bed-00e3-44b0-9c8d-9fc6dd3f2de3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TestResults">
-      <UniqueIdentifier>{24b87d1e-8462-44eb-90ee-c3ddd222963b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.c">
+    <ClCompile Include="set.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="set.c">
+    <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,80 +28,47 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Example.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test1.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test1Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test2.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test2Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test3.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test3Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test4.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test4Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test5.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test5Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test6.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test6Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test7.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test7Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test8.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test8Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test9.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test9Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test10.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test10Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test11.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test11Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
-    <Text Include="Test12.txt">
-      <Filter>Tests</Filter>
-    </Text>
-    <Text Include="Test12Res.txt">
-      <Filter>TestResults</Filter>
-    </Text>
+    <Text Include="Changed_input_tests\TestsRes\Test1Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test2Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test3Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test4Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test5Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test6Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test7Res.txt" />
+    <Text Include="Changed_input_tests\TestsRes\Test8Res.txt" />
+    <Text Include="Changed_input_tests\Tests\Test1.txt" />
+    <Text Include="Changed_input_tests\Tests\Test2.txt" />
+    <Text Include="Changed_input_tests\Tests\Test3.txt" />
+    <Text Include="Changed_input_tests\Tests\Test4.txt" />
+    <Text Include="Changed_input_tests\Tests\Test5.txt" />
+    <Text Include="Changed_input_tests\Tests\Test6.txt" />
+    <Text Include="Changed_input_tests\Tests\Test7.txt" />
+    <Text Include="Changed_input_tests\Tests\Test8.txt" />
+    <Text Include="Main_tests\Example.txt" />
+    <Text Include="Changed_input_tests\ExampleInput2.txt" />
+    <Text Include="Main_tests\TestsRes\Test2Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test1Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test3Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test4Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test5Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test6Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test7Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test8Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test9Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test10Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test11Res.txt" />
+    <Text Include="Main_tests\TestsRes\Test12Res.txt" />
+    <Text Include="Main_tests\Tests\Test1.txt" />
+    <Text Include="Main_tests\Tests\Test2.txt" />
+    <Text Include="Main_tests\Tests\Test3.txt" />
+    <Text Include="Main_tests\Tests\Test4.txt" />
+    <Text Include="Main_tests\Tests\Test5.txt" />
+    <Text Include="Main_tests\Tests\Test6.txt" />
+    <Text Include="Main_tests\Tests\Test7.txt" />
+    <Text Include="Main_tests\Tests\Test8.txt" />
+    <Text Include="Main_tests\Tests\Test9.txt" />
+    <Text Include="Main_tests\Tests\Test10.txt" />
+    <Text Include="Main_tests\Tests\Test11.txt" />
+    <Text Include="Main_tests\Tests\Test12.txt" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,2 @@
+Automata doesn't recognize the word
+false

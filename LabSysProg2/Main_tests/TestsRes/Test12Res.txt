@@ -1,0 +1,2 @@
+Automata will be undefined and won't get to the final state on AcccccBc+w1
+false
