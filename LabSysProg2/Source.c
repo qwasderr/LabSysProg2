@@ -10,6 +10,8 @@
 int sigma[MAX_STATES][MAX_ALPH][MAX_COLLISIONS];
 int states_count = 0;
 int fin_states_count = 0;
+bool recognizes = 1;
+bool wontstop = 0;
 int str_len(char* t) {
 	return (strchr(t, 0) - t) / sizeof(char);
 }
@@ -74,38 +76,53 @@ bool is_final(int state, int * final_states) {
 }
 SimpleSet* states_after_word(char* word, int state, int *states,char *alph, int *final_states) {
 	SimpleSet states2;
+	SimpleSet tempStates;
 	set_init(&states2);
+	set_init(&tempStates);
 	char s[100];
 	sprintf(s, "%d", state);
+	bool flag;
 	//_itoa_s(state,s,10);
 	//s = (char*)state;
-	SimpleSet tempStates2;
-	set_init(&tempStates2);
-	
 	set_add(&states2,s);
 	for (int i = 0; i < str_len(word); ++i) {
-		SimpleSet tempStates;
-		set_init(&tempStates);
-		int t = sizeof(states) / sizeof(int);
+		//int t = sizeof(states) / sizeof(int);
+		flag = 0;
 		for (int j = 0; j < states_count; ++j) {
 			sprintf(s, "%d", states[j]);
 			//s = (char*)states[j];
 			if (set_contains(&states2, s) == SET_TRUE) {
 				
 				if (sigma[states[j]][get_alph_pos(word[i], alph)][0] > 0) {
+					flag = 1;
 					for (int k = 1; k <= sigma[states[j]][get_alph_pos(word[i], alph)][0]; ++k) {
 						//s = (char*)(sigma[states[j]][get_alph_pos(word[i], alph)][k]);
 						sprintf(s, "%d", sigma[states[j]][get_alph_pos(word[i], alph)][k]);
-						if (!is_final(sigma[states[j]][get_alph_pos(word[i], alph)][k],final_states)) set_add(&tempStates, s);
+						if (!is_final(sigma[states[j]][get_alph_pos(word[i], alph)][k], final_states)) {
+							set_add(&tempStates, s); set_add(&states2, s);
+						}
 					}
 					
 				}
 			}
 		}
 		//states2=remove_final(tempStates, final_states);
-		states2 = tempStates;
+		//states2 = tempStates;
+		set_clear(&states2);
+		for (int k = 0; k < states_count; ++k) {
+			sprintf(s, "%d", states[k]);
+			if (set_contains(&tempStates, s) == SET_TRUE) set_add(&states2, s);
+		}
+		//int k = set_contains(&states2, "1");
+		set_clear(&tempStates);
+		if (flag == 0) {
+			printf("Automata doesn't recognize the word\n");
+			recognizes = 0;
+			return &states2;
+		}
+		//int v = set_contains(&states2, "1");
 	}
-	
+	set_destroy(&tempStates);
 	return &states2;
 }
 SimpleSet* bfs(SimpleSet set, char *alph, int* states) {
@@ -146,16 +163,18 @@ SimpleSet* bfs(SimpleSet set, char *alph, int* states) {
 SimpleSet* delete_finals(SimpleSet set, int* final_states, char*word) {
 	char c[100];
 	int count = 0;
-	if (set_length(&set) == 0) printf("Automata is undetermined\n");
+	if (set_length(&set) == 0&&recognizes!=0) printf("Automata recognizes the word and is in its final state\n");
 	for (int i = 0; i < fin_states_count; ++i) {
 		sprintf(c, "%d", final_states[i]);
 		if (set_contains(&set, c) == SET_TRUE) { set_remove(&set, c); ++count; }
 	}
-	if (count == 0&&set_length(&set)>0) printf("Automata won't stop on %s+w1\n", word);
+	if (count == 0 && set_length(&set) > 0) {
+		printf("Automata won't stop(wont't get to the final state) on %s+w1\n", word); wontstop = 1;
+	}
 	return &set;
 }
 bool check(SimpleSet set) {
-	if (set_length(&set) > 0) return true; return false;
+	if (set_length(&set) > 0 &&wontstop!=1) return true; return false;
 }
 int main() {
 	FILE* f;
@@ -163,6 +182,8 @@ int main() {
 	char *alph = (char*)malloc(MAX_ALPH * sizeof(char));
 	int* states = (int*)malloc(MAX_STATES * sizeof(int));
 	int start_state;
+	char word[50];
+	//scanf("%s", &word);
 	
 	memset(sigma, 0, MAX_STATES*MAX_ALPH*MAX_COLLISIONS*sizeof(int));
 	//char *final_states= (char*)malloc(MAX_STATES * sizeof(char));
@@ -171,6 +192,9 @@ int main() {
 	for (int i = 0; i < 32; ++i) buffer[i] = NULL;
 	int j = 0,i=0,prev_state,next_state;
 	while (!feof(f)) {
+		fscanf(f, "%s", &word);
+		ch = fgetc(f);
+		//fgets(&word, MAX_ALPH, f);
 		fgets(alph, MAX_ALPH, f);
 		get_states(f, states);
 		//fgets(&start_state,10,f);
@@ -188,6 +212,8 @@ int main() {
 			++sigma[prev_state][get_alph_pos(symbol, alph)][0];
 		}
 	}
+	
+	fclose(f);
 	/*for (int k = 0; k < 5; ++k) {
 		for (int h = 0; h < 5; ++h) {
 			for (int t=1;t<= sigma[k][h][0];++t)
@@ -195,12 +221,17 @@ int main() {
 		}
 		printf("%\n");
 	}*/
-	char word[50];
-	scanf("%s", &word);
+	
 	 SimpleSet *__states;
 	__states=states_after_word(word, start_state, states,alph,final_states);
 	__states=bfs(*__states,alph,states);
 	__states=delete_finals(*__states, final_states,word);
 	bool answer = check(*__states);
-	printf("%s", answer ? "true" : "false");
+	if (is_final(start_state, final_states)) printf("Automata is in its final state already");
+	else printf("%s", answer ? "true" : "false");
+	set_destroy(__states);
+	free(alph);
+	free(states);
+	free(final_states);
+	
 }

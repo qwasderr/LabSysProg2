@@ -135,6 +135,33 @@
   <ItemGroup>
     <ClInclude Include="set.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Example.txt" />
+    <Text Include="Test1.txt" />
+    <Text Include="Test10.txt" />
+    <Text Include="Test10Res.txt" />
+    <Text Include="Test11.txt" />
+    <Text Include="Test11Res.txt" />
+    <Text Include="Test12.txt" />
+    <Text Include="Test12Res.txt" />
+    <Text Include="Test1Res.txt" />
+    <Text Include="Test2.txt" />
+    <Text Include="Test2Res.txt" />
+    <Text Include="Test3.txt" />
+    <Text Include="Test3Res.txt" />
+    <Text Include="Test4.txt" />
+    <Text Include="Test4Res.txt" />
+    <Text Include="Test5.txt" />
+    <Text Include="Test5Res.txt" />
+    <Text Include="Test6.txt" />
+    <Text Include="Test6Res.txt" />
+    <Text Include="Test7.txt" />
+    <Text Include="Test7Res.txt" />
+    <Text Include="Test8.txt" />
+    <Text Include="Test8Res.txt" />
+    <Text Include="Test9.txt" />
+    <Text Include="Test9Res.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
