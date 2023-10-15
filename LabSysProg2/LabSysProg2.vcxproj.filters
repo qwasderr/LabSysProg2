@@ -18,7 +18,7 @@
     <ClCompile Include="set.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source.c">
+    <ClCompile Include="Check.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

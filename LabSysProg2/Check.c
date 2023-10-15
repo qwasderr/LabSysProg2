@@ -11,6 +11,8 @@
 #define WIT_LEN 100
 int sigma1[MAX_STATES][MAX_ALPH];
 int sigma2[MAX_STATES][MAX_ALPH];
+char witnesses[10][10][10];
+int start_state1,start_state2;
 int states_count = 0;
 int fin_states_count = 0;
 bool recognizes = 1;
@@ -78,18 +80,127 @@ bool is_final(int state, int* final_states) {
 	}
 	return false;
 }
+SimpleSet* bfs1(SimpleSet set, char* alph, int* states, int alph_num) {
+	int size_alph = str_len(alph);
+	char c[100];
+	int* marked = (int*)malloc(states_num1 * sizeof(int));
+	for (int i = 0; i < states_num1; ++i) marked[i] = 0;
+	int* queue = (int*)malloc(states_num1 * sizeof(int));
+	int head = 0, tail = 0;
+	for (int i = 0; i < states_num1; ++i) marked[i] = 0;
+	for (int j = 0; j < states_num1; ++j) {
+		sprintf(c, "%d", states[j]);
+		if (set_contains(&set, c) == SET_TRUE) {
+			queue[head] = states[j];
+			++head;
+			marked[j] = 1;
+		}
+	}
+	set_clear(&set);
+	while (head != tail) {
+		for (int i = 0; i < alph_num; ++i) {
+				sprintf(c, "%d", sigma1[queue[tail]][i]);
+				int temp = set_add(&set, c);
+				if (temp != SET_ALREADY_PRESENT) {
+					queue[head] = sigma1[queue[tail]][i];
+					++head;
+				}
+			
+		}
+		++tail;
+	}
+	return &set;
+
+}
+SimpleSet* delete_finals(SimpleSet set, int* final_states, int* states, int num) {
+	char c[100];
+	int count = 0;
+	for (int i = 0; i < num; ++i) {
+		if (!is_final(states[i], final_states)) {
+			sprintf(c, "%d", states[i]);
+			if (set_contains(&set, c) == SET_TRUE) { set_remove(&set, c); ++count; }
+		}
+	}
+	return &set;
+}
+SimpleSet* bfs2(SimpleSet set, char* alph, int* states, int alph_num) {
+	int size_alph = str_len(alph);
+	char c[100];
+	int* marked = (int*)malloc(states_num2 * sizeof(int));
+	for (int i = 0; i < states_num2; ++i) marked[i] = 0;
+	int* queue = (int*)malloc(states_num2 * sizeof(int));
+	int head = 0, tail = 0;
+	for (int i = 0; i < states_num2; ++i) marked[i] = 0;
+	for (int j = 0; j < states_num2; ++j) {
+		sprintf(c, "%d", states[j]);
+		if (set_contains(&set, c) == SET_TRUE) {
+			queue[head] = states[j];
+			++head;
+			marked[j] = 1;
+		}
+	}
+	set_clear(&set);
+	while (head != tail) {
+		for (int i = 0; i < alph_num; ++i) {
+				sprintf(c, "%d", sigma2[queue[tail]][i]);
+				int temp = set_add(&set, c);
+				if (temp != SET_ALREADY_PRESENT) {
+					queue[head] = sigma2[queue[tail]][i];
+					++head;
+				}
+			
+		}
+		++tail;
+	}
+	return &set;
+
+}
+void witness_check(int key1, int key2, char*witness) {
+	int witness_pos = 0;
+	while (key1 != start_state1 || key2 != start_state2) {
+		char* next = witnesses[key1][key2];
+		char q1[100], q2[100];
+		int pos = 0, q1pos = 0, q2pos = 0;
+		while (next[pos] != ' ') {
+			q1[q1pos] = next[pos];
+			++pos;
+			++q1pos;
+		}
+		q1[q1pos] = '\n';
+		++pos;
+		while (next[pos] != ' ') {
+			q2[q2pos] = next[pos];
+			++pos;
+			++q2pos;
+		}
+		q2[q2pos] = '\n';
+		++pos;
+		char symbol1 = next[pos];
+		witness[witness_pos] = symbol1;
+		++witness_pos;
+		key1 = atoi(q1);
+		key2 = atoi(q2);
+		int th = 1;
+	}
+	//return witness;
+}
+void witness_print(FILE* file, char* witness, char alph) {
+	fprintf(file, "Witness: ");
+	int wit_len = str_len(witness);
+	if (alph!=NULL) fprintf(file, "%c", alph);
+	for (int len = wit_len - 1; len >= 0; --len) fprintf(file, "%c", witness[len]);
+}
 int main() {
 	FILE* f;
 	fopen_s(&f, "automata1.txt", "rt");
 	char* alph1 = (char*)malloc(MAX_ALPH * sizeof(char));
 	int* states1 = (int*)malloc(MAX_STATES * sizeof(int));
-	int start_state1;
 	char temp[50];
 	SimpleSet states_1[50];
 	SimpleSet states_2[50];
 	int states_1_count = 0;
 	int states_2_count = 0;
-	memset(sigma1, 0, MAX_STATES * MAX_ALPH * sizeof(int));
+	memset(sigma1, -1, MAX_STATES * MAX_ALPH * sizeof(int));
 	int* final_states1 = (int*)malloc(MAX_STATES * sizeof(int));
 	char ch, buffer[32], symbol;
 	for (int i = 0; i < 32; ++i) buffer[i] = NULL;
@@ -128,8 +239,8 @@ int main() {
 	fopen_s(&f, "automata2.txt", "rt");
 	char* alph2 = (char*)malloc(MAX_ALPH * sizeof(char));
 	int* states2 = (int*)malloc(MAX_STATES * sizeof(int));
-	int start_state2;
-	memset(sigma2, 0, MAX_STATES * MAX_ALPH * sizeof(int));
+	//int start_state2;
+	memset(sigma2, -1, MAX_STATES * MAX_ALPH * sizeof(int));
 	int* final_states2 = (int*)malloc(MAX_STATES * sizeof(int));
 	for (int i = 0; i < 32; ++i) buffer[i] = NULL;
 
@@ -209,7 +320,7 @@ int main() {
 	stack[stack_count][0] = start_state1;
 	stack[stack_count][1] = start_state2;
 	int seen[100][2];
-	char witnesses[10][10][10];
+	
 	char temp1[STATE_LEN];
 	char temp2[STATE_LEN];
 	char witness[WIT_LEN];
@@ -221,10 +332,13 @@ int main() {
 	//char next[10];
 	int witness_pos = 0;
 	int seen_count = 0,key1,key2;
-	if ((is_final(start_state1, final_states1) && !is_final(start_state2, final_states2)) || (!is_final(start_state1, final_states1) && is_final(start_state2, final_states2))) {
-		fprintf(file,"Witness : empty string\n");
+	/*if ((is_final(start_state1, final_states1) && !is_final(start_state2, final_states2)) || (!is_final(start_state1, final_states1) && is_final(start_state2, final_states2))) {
+		fprintf(file,"Witness : %c\n",alph1[start_state1]);
 		fprintf(file, "false");
 		return 0;
+	}*/
+	if (alph_num1 != alph_num2) {
+		fprintf(file, "the sizes of the alphabets do not match\n false"); return 0;
 	}
 	++stack_count;
 	while (stack_count != 0) {
@@ -239,8 +353,35 @@ int main() {
 			int r1 = sigma1[statet1][i], r2 = sigma2[statet2][i];
 			fprintf(file,"1-st automata: state %i => state %i on %c\n", statet1,r1,alph1[i]);
 			fprintf(file,"2-nd automata: state %i => state %i on %c\n", statet2, r2, alph2[i]);
-			
-			if ((is_final(r1, final_states1) && !is_final(r2, final_states2)) || (!is_final(r1, final_states1) && is_final(r2, final_states2))) {
+			if (r1 == -1 && r2 == -1) { fprintf(file, "For both automata the final state isn't reachable from this position => continue\n\n"); continue; }
+			else if (r1 == -1) {
+				SimpleSet set;
+				SimpleSet* res;
+				set_init(&set);
+				sprintf(temp1, "%d", r2);
+				set_add(&set, temp1);
+				res=bfs2(set, alph2, states2,alph_num2);
+				res = delete_finals(*res, final_states2, states2, states_num2);
+				if (set_length(res) > 0) { fprintf(file, "For the first automata the final state isn't reachable from this position and for the second one it is\n"); witness_check(statet1, statet2, witness); witness_print(file, witness,alph2[i]); fprintf(file, "%s", "+w, w belongs to A*"); fclose(file); return 0; }
+				else { fprintf(file, "For both automata the final state isn't reachable from this position => continue\n\n"); continue; }
+			}
+			else if (r2 == -1) {
+				SimpleSet set;
+				SimpleSet* res;
+				set_init(&set);
+				sprintf(temp1, "%d", r1);
+				set_add(&set, temp1);
+				res = bfs1(set, alph1, states1,alph_num1);
+				res = delete_finals(*res, final_states1, states1, states_num1);
+				if (set_length(res) > 0) {
+
+					fprintf(file, "For the second automata the final state isn't reachable from this position and for the first one it is\n"); 
+					witness_check(statet1, statet2, witness); witness_print(file, witness, alph1[i]); fprintf(file, "%s", "+w, w belongs to A*"); fclose(file);
+					return 0;
+				}
+				else { fprintf(file, "For both automata the final state isn't reachable from this position => continue\n\n"); continue; }
+			}
+			else if ((is_final(r1, final_states1) && !is_final(r2, final_states2)) || (!is_final(r1, final_states1) && is_final(r2, final_states2))) {
 				key1 = r1;
 				key2 = r2;
 				sprintf(temp1, "%d", statet1);
@@ -255,35 +396,9 @@ int main() {
 				++len;
 				temp1[len] = alph1[i];
 				for (int m = 0; m <= len; ++m) witnesses[r1][r2][m] = temp1[m];
-				while (key1 != start_state1 || key2 != start_state2) {
-					char *next = witnesses[key1][key2];
-					char q1[100],q2[100];
-					int pos = 0, q1pos = 0, q2pos = 0;
-					while (next[pos] != ' ') {
-						q1[q1pos] = next[pos];
-						++pos;
-						++q1pos;
-					}
-					q1[q1pos] = '\n';
-					++pos;
-					while (next[pos] != ' ') {
-						q2[q2pos] = next[pos];
-						++pos;
-						++q2pos;
-					}
-					q2[q2pos] = '\n';
-					++pos;
-					char symbol1 = next[pos];
-					witness[witness_pos] = symbol1;
-					++witness_pos;
-					key1 = atoi(q1);
-					key2 = atoi(q2);
-					int th = 1;
-				}
+				witness_check(key1, key2, witness);
 				fprintf(file, "state %i of the 1-st automata and the state %i of the second one aren't both non-final or final =>automata aren't equal\n",r1,r2);
-				fprintf(file,"Witness: ");
-				int wit_len = str_len(witness);
-				for (int len = wit_len - 1; len >= 0; --len) fprintf(file, "%c", witness[len]);
+				witness_print(file, witness,NULL);
 				fclose(file);
 				return 0;
 			}
