@@ -1,0 +1,2 @@
+First automata produces a*b
+Second automata produces aa*b

@@ -1,0 +1,1 @@
+Both automata produce a*b

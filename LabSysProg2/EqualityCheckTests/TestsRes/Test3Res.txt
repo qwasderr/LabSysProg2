@@ -1,0 +1,40 @@
+1-st automata: state 0 => state 0 on a
+2-nd automata: state 0 => state 0 on a
+state 0 of the 1-st automata and the state 0 of the second one are both non-final or final => next check
+
+1-st automata: state 0 => state 1 on b
+2-nd automata: state 0 => state 1 on b
+state 1 of the 1-st automata and the state 1 of the second one are both non-final or final => next check
+
+1-st automata: state 1 => state 2 on a
+2-nd automata: state 1 => state 2 on a
+state 2 of the 1-st automata and the state 2 of the second one are both non-final or final => next check
+
+1-st automata: state 1 => state 0 on b
+2-nd automata: state 1 => state 0 on b
+state 0 of the 1-st automata and the state 0 of the second one are both non-final or final => next check
+
+1-st automata: state 2 => state 1 on a
+2-nd automata: state 2 => state 3 on a
+state 1 of the 1-st automata and the state 3 of the second one are both non-final or final => next check
+
+1-st automata: state 2 => state 2 on b
+2-nd automata: state 2 => state 2 on b
+state 2 of the 1-st automata and the state 2 of the second one are both non-final or final => next check
+
+1-st automata: state 1 => state 2 on a
+2-nd automata: state 3 => state 1 on a
+state 2 of the 1-st automata and the state 1 of the second one are both non-final or final => next check
+
+1-st automata: state 1 => state 0 on b
+2-nd automata: state 3 => state 0 on b
+state 0 of the 1-st automata and the state 0 of the second one are both non-final or final => next check
+
+1-st automata: state 2 => state 1 on a
+2-nd automata: state 1 => state 2 on a
+state 1 of the 1-st automata and the state 2 of the second one are both non-final or final => next check
+
+1-st automata: state 2 => state 2 on b
+2-nd automata: state 1 => state 0 on b
+state 2 of the 1-st automata and the state 0 of the second one aren't both non-final or final =>automata aren't equal
+Witness: baaab

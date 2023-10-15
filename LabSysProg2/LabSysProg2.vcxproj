@@ -151,6 +151,29 @@
     <Text Include="Changed_input_tests\Tests\Test6.txt" />
     <Text Include="Changed_input_tests\Tests\Test7.txt" />
     <Text Include="Changed_input_tests\Tests\Test8.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test1Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test2Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test3Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test4Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test5Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test6Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test7Res.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test1\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test1\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test2\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test2\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test3\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test3\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test4\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test4\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test5\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test5\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\Explanation.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\Explanation.txt" />
     <Text Include="Main_tests\Example.txt" />
     <Text Include="Main_tests\TestsRes\Test10Res.txt" />
     <Text Include="Main_tests\TestsRes\Test11Res.txt" />
@@ -176,6 +199,17 @@
     <Text Include="Main_tests\Tests\Test7.txt" />
     <Text Include="Main_tests\Tests\Test8.txt" />
     <Text Include="Main_tests\Tests\Test9.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="EqualityCheckTests\Tests\Test1\automata1_1.png" />
+    <Image Include="EqualityCheckTests\Tests\Test1\automata1_2.png" />
+    <Image Include="EqualityCheckTests\Tests\Test2\automata2_1.png" />
+    <Image Include="EqualityCheckTests\Tests\Test2\automata2_2.png" />
+    <Image Include="EqualityCheckTests\Tests\Test3\automata3_1.png" />
+    <Image Include="EqualityCheckTests\Tests\Test3\automata3_2.png" />
+    <Image Include="EqualityCheckTests\Tests\Test4\automata4.png" />
+    <Image Include="EqualityCheckTests\Tests\Test5\automata5_1.jpg" />
+    <Image Include="EqualityCheckTests\Tests\Test5\automata5_2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

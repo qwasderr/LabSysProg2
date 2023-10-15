@@ -70,5 +70,57 @@
     <Text Include="Main_tests\Tests\Test10.txt" />
     <Text Include="Main_tests\Tests\Test11.txt" />
     <Text Include="Main_tests\Tests\Test12.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test1\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test1\automata2.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test1Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test2Res.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test2\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test2\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test3\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test3\automata2.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test3Res.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test4Res.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test4\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test4\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test5\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test5\automata2.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test5Res.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\automata2.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test6Res.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test6\Explanation.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\automata1.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\automata2.txt" />
+    <Text Include="EqualityCheckTests\Tests\Test7\Explanation.txt" />
+    <Text Include="EqualityCheckTests\TestsRes\Test7Res.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="EqualityCheckTests\Tests\Test4\automata4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test5\automata5_1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test5\automata5_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test1\automata1_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test1\automata1_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test2\automata2_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test2\automata2_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test3\automata3_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="EqualityCheckTests\Tests\Test3\automata3_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
